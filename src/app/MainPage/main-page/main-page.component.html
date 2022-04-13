@@ -1,0 +1,45 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">name</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Track</th>
+        <th scope="col">operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cousre of courses">
+        <th>{{cousre.id}}</th>
+        <td>{{cousre.name}}</td>
+        <td>{{cousre.duration}}</td>
+        <td>{{cousre.trackId}}</td>
+        <td><button (click)="deleteCourse(cousre.id)" class="btn btn-danger" mat-raised-button>Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+<br>
+<br>
+<br>
+<div class="col-6 mx-5">
+<form #formData="ngForm" (ngSubmit) = "onClickSubmit(formData.value)">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" name="name" class="form-control" id="name" ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="duration" class="form-label">Duration</label>
+      <input type="number" name="duration" class="form-control" id="duration" ngModel>
+    </div>
+    <div class="mb-3">
+        <label for="track" class="form-label">Select Track</label>
+        <select id="track" name="trackId" class="form-select" ngModel>
+          <option *ngFor="let i of tracks" value="{{i.id}}">{{i.name}}</option>
+        </select>
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<br>
+<br>
+<br>
